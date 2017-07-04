@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+	$( document ).on( 'click', 'button', function() {
+		var x = $( '#x' ).val();
+		$.ajax({
+			url:'http://localhost:3000/x2',
+			type:'POST',
+			/*contentType:'application/json',
+			data:JSON.stringify({x:x}),*/
+			data:{type:'abc', x:x},
+			success:function(d) {
+				alert( 'X²: ' + d.x2 );
+			}
+		})
+	});
+	</script>
+	<style>
+	* { font-size:1.25rem;}
+	</style>
+</head>
+<body>
+	<input type="text" id="x"><button>x2</button>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+	$( document ).on( 'click', '#b1', function() {
+
+		$.ajax({
+			url:'http://localhost:3333/user',
+			type:'POST',
+			data:{name:'Alex'},
+			success:function(d) { console.log( d ); },
+			error:function() { console.log( 'ERRRRROR'); }
+		});
+
+
+	});
+
+	$( document ).on( 'click', '#b2', function() {
+
+		$.ajax({
+			url:'http://localhost:3333/user/5',
+			type:'DELETE',
+			data:{},
+			success:function(d) { console.log( d ); },
+			error:function() { console.log( 'ERRRRROR'); }
+		});
+
+
+	});
+
+	$( document ).on( 'click', '#b3', function() {
+
+		$.ajax({
+			url:'http://localhost:3333/user/3',
+			type:'PUT',
+			data:{name:'Thomas'},
+			success:function(d) { console.log( d ); },
+			error:function() { console.log( 'ERRRRROR'); }
+		});
+
+
+	});
+	</script>
+	<style>
+	* { font-size:1.25rem;}
+	</style>
+</head>
+<body>
+	<button id="b1">ADD</button>
+	<button id="b2">DELETE</button>
+	<button id="b3">CHANGE</button>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.2.1.min.js"></script>
+	<script>
+
+	// Darstellung Orte
+	var loadPlaces = function() {
+		$.ajax({
+			url:'http://localhost:5432/places',
+			type:'GET',
+			success:function(d) {
+				$( '#places' ).empty();
+				for (var i in d.places ) {
+					console.log( d.places[i] );
+					if ( d.places[i].name ) {
+						$( '<div>' )
+							.attr( 'data-id', i )
+							.appendTo( '#places' )
+							.html( d.places[i].name + '( '+d.places[i].lat +'/'+d.places[i].lng +' )')
+							.append(
+								$( '<button class="delPlace">Löschen</button>' )
+							)
+					}
+				}
+			}
+		});
+	}
+
+	// wenn Seite ladet, zeige alle gespeicherten Orte
+	$( document ).ready( function() {
+		loadPlaces();
+	})
+
+
+	// Klick SAVE speichere ORT am Server und Lade alles neu
+	$( document ).on( 'click', '#save', function() {
+		var newPlace = {
+			name:$( '#placename').val(),
+			lat:$( '#placelat').val(),
+			lng:$( '#placelng').val()
+		}
+		$.ajax({
+			url:'http://localhost:5432/places',
+			type:'POST',
+			data:newPlace,
+			success:function(d) {
+				alert( 'Gespeichert.' );
+				$( 'input' ).val('');
+				loadPlaces();
+			},
+			error:function() {
+				alert( 'Da ging was schief...');
+			}
+		});
+	});
+
+ // lösche einen Ort
+	$( document ).on( 'click', '.delPlace', function() {
+		var id = $(this).parent().attr('data-id');
+		$.ajax({
+			url:'http://localhost:5432/places/'+id,
+			type:'DELETE',
+			success:function(d) {
+				alert( 'Gelöscht.' );
+				loadPlaces();
+			},
+			error:function() {
+				alert( 'Da ging was schief...');
+			}
+		});
+	});
+
+
+	</script>
+	<style>
+	* { font-size:1.25rem;}
+	</style>
+</head>
+<body>
+	<h1>Neuer Ort<h1>
+	Name: <input type="text" id="placename"><br>
+	Lat: <input type="text" id="placelat"><br>
+	Lng: <input type="text" id="placelng"><br>
+	<button id="save">SAVE</button>
+	<hr>
+	<h1>Alle gespeicherten Orte</h1>
+	<div id="places"></div>
+</body>
+</html>
