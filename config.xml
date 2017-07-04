@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="at.wifiwien.places" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>WiFi Orteverwaltung</name>
+    <description>
+       Application zum Verwalten von Orten im Wifi
+    </description>
+    <author email="###" href="###">###</author>
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14" />
+    <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />
+    <plugin name="cordova-plugin-vibration" source="npm" spec="~2.1.0" />
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+    <icon src="icon.png" />
+    <platform name="android">
+        <icon density="ldpi" src="www/res/icon.png" />
+        <icon density="mdpi" src="www/res/icon.png" />
+        <icon density="hdpi" src="www/res/icon.png" />
+        <icon density="xhdpi" src="www/res/icon.png" />
+        <icon density="xxhdpi" src="www/res/icon.png" />
+        <icon density="xxxhdpi" src="www/res/icon.png" />
+        <splash density="land-ldpi" src="www/res/screen.png" />
+        <splash density="land-mdpi" src="www/res/screen.png" />
+        <splash density="land-hdpi" src="www/res/screen.png" />
+        <splash density="land-xhdpi" src="www/res/screen.png" />
+        <splash density="land-xxhdpi" src="www/res/screen.png" />
+        <splash density="land-xxxhdpi" src="www/res/screen.png" />
+        <splash density="port-ldpi" src="www/res/screen.png" />
+        <splash density="port-mdpi" src="www/res/screen.png" />
+        <splash density="port-hdpi" src="www/res/screen.png" />
+        <splash density="port-xhdpi" src="www/res/screen.png" />
+        <splash density="port-xxhdpi" src="www/res/screen.png" />
+        <splash density="port-xxxhdpi" src="www/res/screen.png" />
+    </platform>
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>
